@@ -1,3 +1,4 @@
-include ':MyActor:MyActorServiceInterface'
-include ':MyActor:MyActorService'
-include ':MyActor:MyActorServiceTestClient'
+include ':MyActorServiceInterface'
+include ':MyActor:MyActorService', ':MyActor:MyActorServiceTestClient'
+
+project(':MyActorServiceInterface').projectDir = new File(settingsDir, 'MyActor/MyActorServiceInterface')
