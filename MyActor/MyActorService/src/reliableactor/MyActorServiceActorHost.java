@@ -25,7 +25,7 @@ private static final Logger logger = Logger.getLogger(MyActorServiceActorHost.cl
             ActorRuntime.registerActorAsync(MyActorServiceImpl.class, (context, actorType) -> new ActorServiceImpl(context, actorType, ()-> new MyActorServiceImpl()), Duration.ofSeconds(10));
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception occured ", e);
+            logger.log(Level.SEVERE, "Exception occured", e);
             throw e;
         }
     }
