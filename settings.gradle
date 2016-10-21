@@ -1,4 +1,0 @@
-include ':MyActorServiceInterface'
-include ':MyActor:MyActorService', ':MyActor:MyActorServiceTestClient'
-
-project(':MyActorServiceInterface').projectDir = new File(settingsDir, 'MyActor/MyActorServiceInterface')
