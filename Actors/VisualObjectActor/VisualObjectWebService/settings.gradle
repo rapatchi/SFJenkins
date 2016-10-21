@@ -1,3 +1,0 @@
-include ':VisualObjectCommon'
-
-project(':VisualObjectCommon').projectDir = new File(settingsDir, '../VisualObjectCommon')

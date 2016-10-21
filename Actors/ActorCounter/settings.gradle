@@ -1,2 +1,0 @@
-include 'CounterActorService','TestClient',':Interface'
-project(':Interface').projectDir = new File(settingsDir, './CounterInterface')
