@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationManifest
+  ApplicationTypeName="HelloWorldStatelessApplicationType"
+  ApplicationTypeVersion="1.0.0"
+  xmlns="http://schemas.microsoft.com/2011/01/fabric"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+  <Description>HelloWorldStateless Application</Description>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="HelloWorldStatelessPkg" ServiceManifestVersion="1.0.0"/>
+  </ServiceManifestImport>
+  <DefaultServices>
+      <Service Name="HelloWorldStateless">
+         <StatelessService ServiceTypeName="HelloWorldStatelessType" InstanceCount="1">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>      
+   </DefaultServices>      
+</ApplicationManifest>
