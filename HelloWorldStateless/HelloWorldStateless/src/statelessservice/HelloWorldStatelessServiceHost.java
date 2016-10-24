@@ -18,7 +18,7 @@ public class HelloWorldStatelessServiceHost {
             logger.log(Level.INFO, "Registered stateless service of type HelloWorldStatelessType");
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception ex) {
-            logger.log(Level.SEVERE, "Exception occurred", ex);
+            logger.log(Level.SEVERE, "Exception occurred ", ex);
             throw ex;
         }
     }
