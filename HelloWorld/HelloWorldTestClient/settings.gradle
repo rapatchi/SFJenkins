@@ -1,0 +1,3 @@
+include ':HelloWorldInterface'
+
+project(':HelloWorldInterface').projectDir = new File(settingsDir, '../HelloWorldInterface')

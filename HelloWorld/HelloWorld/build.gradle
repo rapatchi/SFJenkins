@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceSets {
+  main {
+     java.srcDirs = ['src']
+     output.classesDir = 'out/classes'
+      resources {
+       srcDirs = ['src']
+     }
+   }
+}
+
+dependencies {
+    compile fileTree(dir: "/opt/microsoft/sdk/servicefabric/java/packages/lib", include: ['*.jar'])
+	compile project(':HelloWorldInterface')
+}
+
+clean.doFirst {
+	delete "${projectDir}/out"
+	delete "${projectDir}/../HelloWorldApplication/HelloWorldPkg/Code/lib"
+    delete "${projectDir}/../HelloWorldApplication/HelloWorldPkg/Code/HelloWorld.jar"
+}
+
+jar {
+    manifest {
+    attributes(
+                'Main-Class': 'reliableactor.HelloWorldActorHost',
+                "Class-Path": configurations.compile.collect { 'lib/' + it.getName() }.join(' '))
+    baseName "HelloWorld"
+    destinationDir = file('../HelloWorldApplication/HelloWorldPkg/Code')
+}
+}
+task copyDeps<< {
+	copy {
+		from("/opt/microsoft/sdk/servicefabric/java/packages/lib")
+		into("../HelloWorldApplication/HelloWorldPkg/Code/lib")
+		include('*.jar')
+	}
+	copy {
+		from("/opt/microsoft/sdk/servicefabric/java/packages/lib")
+		into("../HelloWorldApplication/HelloWorldPkg/Code/lib")
+		include('*.so')
+	}
+	copy {
+		from("/opt/microsoft/sdk/servicefabric/java/packages/lib")
+		into("../HelloWorldApplication/HelloWorldPkg/Code/lib")
+		include('*.dll')
+	}
+	copy {
+		from("../HelloWorldInterface/out/lib")
+		into("../HelloWorldApplication/HelloWorldPkg/Code/lib")
+		include('*.jar')
+	}
+}
+
+
+defaultTasks 'clean', 'jar', 'copyDeps'
