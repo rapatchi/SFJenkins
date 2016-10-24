@@ -24,7 +24,7 @@ public class HelloWorldActorHost {
             ActorRuntime.registerActorAsync(HelloWorldImpl.class, (context, actorType) -> new ActorServiceImpl(context, actorType, ()-> new HelloWorldImpl()), Duration.ofMinutes(10));
             Thread.sleep(Long.MAX_VALUE);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Exception occurred", e);
+            logger.log(Level.SEVERE, "Exception occurred ", e);
             throw e;
         }
     }
