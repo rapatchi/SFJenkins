@@ -45,7 +45,7 @@ public class HelloWorldImpl extends ReliableActor implements HelloWorld {
     // TODO: Replace with your own actor method.
     @Override
     public CompletableFuture<Integer> getCountAsync() {
-        logger.log(Level.INFO, "Getting current count value");
+        logger.log(Level.INFO, "Getting current count value:");
         return this.stateManager().getStateAsync("count");
     }
 
