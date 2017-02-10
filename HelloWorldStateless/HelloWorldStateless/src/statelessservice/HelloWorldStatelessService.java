@@ -14,7 +14,7 @@ public class HelloWorldStatelessService extends StatelessService {
         return super.createServiceInstanceListeners();
     }
 
-/*    @Override
+/*   @Override
     protected CompletableFuture<?> runAsync() {
         // TODO: Replace the following with your own logic.
         return super.runAsync();
