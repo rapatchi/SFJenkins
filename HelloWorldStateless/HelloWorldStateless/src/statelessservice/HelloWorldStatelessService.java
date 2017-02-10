@@ -10,7 +10,7 @@ public class HelloWorldStatelessService extends StatelessService {
 
     @Override
     protected List<ServiceInstanceListener> createServiceInstanceListeners() {
-         //TODO: If your service needs to handle user requests, return the list of ServiceInstanceListeners from here.
+         //TODO:If your service needs to handle user requests, return the list of ServiceInstanceListeners from here.
         return super.createServiceInstanceListeners();
     }
 
