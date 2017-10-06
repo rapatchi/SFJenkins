@@ -1,0 +1,7 @@
+{
+  "generator-azuresfjava": {
+    "projName": "JavaActorApp1",
+    "frameworkType": "Reliable Actor Service",
+    "author": "<your name>"
+  }
+}
