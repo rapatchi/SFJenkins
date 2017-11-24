@@ -16,7 +16,7 @@ public class MyActorServiceTestClient {
     * @param args the command line arguments
     */
     public static void main(String[] args) throws URISyntaxException, InterruptedException, ExecutionException {
-        MyActorService actorProxy = ActorProxyBase.create(new ActorId("From Actor 1"), new URI("fabric:/MyActor/MyActorServiceService"), MyActorService.class);
+        MyActorService actorProxy = ActorProxyBase.create(MyActorService.class, new ActorId("From Actor 1"), new URI("fabric:/MyActor/MyActorServiceService"));
         int count = actorProxy.getCountAsync().get();
         System.out.println("From Actor:" + ActorExtensions.getActorId(actorProxy) + " CurrentValue:" + count);
         actorProxy.setCountAsync(count + 1).get();

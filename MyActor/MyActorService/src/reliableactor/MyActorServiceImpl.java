@@ -6,10 +6,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import microsoft.servicefabric.actors.ActorServiceAttribute;
-import microsoft.servicefabric.actors.ReliableActor;
+import microsoft.servicefabric.actors.FabricActor;
 import microsoft.servicefabric.actors.StatePersistence;
 import microsoft.servicefabric.actors.StatePersistenceAttribute;
-
+import microsoft.servicefabric.actors.ActorId;
+import microsoft.servicefabric.actors.FabricActorService;
 
 /* 
 This class represents an actor.
@@ -21,9 +22,12 @@ The StatePersistence attribute determines persistence and replication of actor s
 */
 @ActorServiceAttribute(name = "MyActorServiceService")
 @StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-public class MyActorServiceImpl extends ReliableActor implements MyActorService {
+public class MyActorServiceImpl extends FabricActor implements MyActorService {
     Logger logger = Logger.getLogger(this.getClass().getName());
-
+    
+    public MyActorServiceImpl(FabricActorService actorService, ActorId actorId){
+        super(actorService, actorId);
+    } 
     /*
     This method is called whenever an actor is activated.
     An actor is activated the first time any of its methods are invoked.

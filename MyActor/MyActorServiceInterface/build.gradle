@@ -11,12 +11,35 @@ sourceSets {
    }
 }
 
-dependencies {
-    compile fileTree(dir: "/opt/microsoft/sdk/servicefabric/java/packages/lib", include: ['*.jar'])
+repositories {
+    mavenCentral()
 }
+
+configurations {
+    azuresf
+}
+dependencies {
+  azuresf ('com.microsoft.servicefabric:sf-actors:1.0.0-preview1')   
+  compile fileTree(dir: 'lib', include: '*.jar')
+
+}
+
+task explodeDeps(type: Copy, dependsOn:configurations.azuresf) { task ->
+    configurations.azuresf.filter { it.toString().contains("native") }.each{
+        from zipTree(it)
+    }
+    configurations.azuresf.filter { !it.toString().contains("native") }.each {
+        from it
+    }
+    into "lib"
+    include "lib*.so", "*.jar"
+}
+
+compileJava.dependsOn(explodeDeps)
 
 clean.doFirst {
 	delete "${rootDir}/out"
+  delete "${rootDir}/lib"
 }
 
 jar {
